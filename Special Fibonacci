@@ -1,0 +1,29 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+public class AddRec {
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        for (int i = 0; i < n; i++){
+            int[] nums = new int[3];
+            String[] strnum = new String[3];
+            strnum = br.readLine().split(" ");
+            for (int j = 0; j < strnum.length; j++){
+                nums[j] = Integer.parseInt(strnum[j]);
+            }
+            System.out.println(helper(nums[0],nums[1],nums[2]));
+        }
+    }
+    private static int helper(int a, int b, int c) {
+        if (c == 0) {
+            return a;
+        }
+        if (c == 1) {
+            return b;
+        }
+        return helper(a,b,c-1) ^ helper(a,b,c-2);
+    }
+}
