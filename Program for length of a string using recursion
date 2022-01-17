@@ -1,0 +1,15 @@
+
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		System.out.println(lenOfStr("geeksforgeeks", 0));
+	}
+	private static int lenOfStr(String s, int size) {
+	    if (s.isEmpty()) {
+	        return size;
+	    }
+	    return lenOfStr(s.substring(1), size + 1);
+	    
+	}
+}
