@@ -1,0 +1,14 @@
+import java.io.*;
+import java.util.*;
+class GFG {
+	public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+		System.out.println(firstUpperCase(sc.nextLine()));
+	}
+	private static char firstUpperCase(String s) {
+	    if (s.charAt(0) >= 65 && s.charAt(0) <= 91) {
+	        return s.charAt(0);
+	    }
+	    return firstUpperCase(s.substring(1));
+	}
+}
