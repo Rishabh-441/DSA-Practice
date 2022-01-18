@@ -1,0 +1,40 @@
+class Solution
+{
+    public static Node addOne(Node head) 
+    { 
+        head = revLL(head);
+        Node hd = head;
+        Node n = head;
+        int carry = 1;
+        while (carry != 0) {
+            
+            int val = n.data;
+            int add = (val + carry)%10;
+            carry = (val + carry)/10; 
+            n.data = add;
+            
+            if (n.next == null && carry != 0) {
+                
+                Node node = new Node(carry);
+                n.next = node;
+                break;
+            }
+            n = n.next;
+        }
+        return revLL(hd);
+    }
+    private static Node revLL(Node head) {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        
+        while(current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        return head;
+    }
+}
