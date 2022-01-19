@@ -1,0 +1,14 @@
+class Solution {
+    //Function to check if the linked list has a loop.
+    public static boolean detectLoop(Node head){
+        int count = 1;
+        while(head.next != null && count <= 10000){
+            head = head.next;
+            count ++;
+        }
+        if (head.next == null) {
+            return false;
+        }
+        return true;
+    }
+}
