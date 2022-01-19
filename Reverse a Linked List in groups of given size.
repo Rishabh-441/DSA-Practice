@@ -1,0 +1,29 @@
+class Solution{
+    //Function to rotate a linked list.
+    public Node rotate(Node head, int k) {
+        Node check = head;
+        int size = 1;
+        while(check.next != null) {
+            check = check.next;
+            size++;
+        }
+        // System.out.println(size);
+        // System.out.println(k);
+        Node rhead = head;
+        for (int i = 0; i < k-1; i++) {
+            // System.out.println("not to enter");
+            rhead = rhead.next;
+        }
+        if (rhead.next == null) {
+            return head;
+        }
+        Node first = rhead.next;
+        rhead.next = null;
+        Node rfirst = first;
+        while (rfirst.next != null) {
+            rfirst = rfirst.next;
+        }
+        rfirst.next = head;
+        return first;
+    }
+}
