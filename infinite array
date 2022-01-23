@@ -1,0 +1,35 @@
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    int ans = -1;
+	    int[] arr = {1,2,3,4,5,6,7,8,12,23,34,45,56,67,78,89,90,123,243,345,456,577,678,12345,23456,34567,45678};
+	    int target = 123;
+	    int[] pos = {0,1};		
+	    while(ans == -1) {
+		    ans = binarySearch(arr, target, pos[0], pos[1]);
+		    pos = nextStartEnd(pos[0], pos[1]); 
+		}
+		System.out.println(ans);
+	}
+	private static int[] nextStartEnd(int start, int end) {
+	    int[] arr = {end + 1, end + 2*(end - start + 1)};
+	    return arr;
+	}
+	private static int binarySearch(int[] arr, int target, int start, int end) {
+	    while (start <= end) {
+	        int mid = (start + end) / 2;  
+	        if (arr[mid] == target) {
+	            return mid;
+	        }
+	        if (arr[mid] < target) {
+	            start = mid + 1;
+	        }
+	        else {
+	            end = mid - 1;
+	        }
+	    }
+	    return -1;
+	} 
+	
+}
