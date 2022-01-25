@@ -1,0 +1,22 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        return generateP("",n,n);
+    }
+    List<String> generateP(String str, int x, int y) {
+        List<String> outer = new ArrayList();
+        if (x == 0 && y == 0){
+            List<String> list = new ArrayList();
+            list.add(str);
+            return list;
+        }
+        if (x < 0) {
+            List<String> list = new ArrayList();
+            return list;
+        }
+        if (y > 0 && x < y) {
+            outer.addAll(generateP(str + ')', x, y - 1));
+        }
+        outer.addAll(generateP(str+'(', x - 1, y));
+        return outer;
+    }
+}
