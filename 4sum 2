@@ -1,0 +1,18 @@
+class Solution {
+    public int fourSumCount(int[] arr1, int[] arr2, int[] arr3, int[] arr4) {
+         HashMap<Integer, Integer> map = new HashMap<>();
+        for (var e1: arr1) {
+            for (var e2: arr2) {
+                map.put(e1 + e2, map.getOrDefault(e1 + e2, 0) + 1);
+            }
+        }
+
+        int count = 0;
+        for (var e1: arr3) {
+            for (var e2: arr4) {
+                count += map.getOrDefault(- (e1 + e2), 0);
+            }
+        }
+        return count;
+    }
+}
