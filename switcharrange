@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      String str = sc.next();
+      
+      String ans = helper(str, 1, 0, str.length()-1);
+      System.out.println(ans);
+  }
+  
+  static String helper(String str, int operation, int start, int end) {
+      String ans = "";
+      if (start > end) return ans;
+      if (operation == 1) {
+        ans += str.charAt(end) + helper(str, operation ^ 1, start, end - 1);
+      }
+      else {
+        ans += str.charAt(start) + helper(str, operation ^ 1, start + 1, end);
+      }
+      return ans;
+  }
+}
