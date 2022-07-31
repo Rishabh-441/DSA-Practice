@@ -1,0 +1,39 @@
+import java.util.*;
+ public class Main {
+   public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String str1 = "sumeet";
+    String str2 = "ssssssuuuuummmmmmeeeeeetttttt";
+    
+    System.out.println(isPossible(str1, str2));
+  } 
+  
+  private static boolean isPossible (String str1, String str2) {
+    if (str1.length() > str2.length()) return false;
+    int i = 0;
+    int j = 0;
+    
+    while (i < str1.length() && j < str2.length()) {
+      System.out.print("str1.charAt(" + i +") = " + str1.charAt(i) + "   ");
+      System.out.println("str2.charAt(" + j+ ") = " + str2.charAt(j));
+      if (str1.charAt(i) == str2.charAt(j)) {
+        i++; j++;
+      }
+      else if (i > 0 && str1.charAt(i-1) == str2.charAt(j)) {
+        j++;
+      }
+      else {
+        return false;
+      }
+    }
+    
+    while (j < str2.length()) {
+      if (str2.charAt(j) != str1.charAt(i-1)) {
+        // System.out.print1n("j < str2.length()");
+        return false;
+      }
+      j++;
+    }
+    return i < str1.length() ? false : true;
+  }
+}
