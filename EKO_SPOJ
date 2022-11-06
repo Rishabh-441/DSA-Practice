@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        double m = sc.nextDouble();
+        double maxH = -1;
+        double[] arr = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextDouble();
+            if(maxH < arr[i]) maxH = arr[i];
+        }
+
+        double s = 0;
+        double e = maxH;
+        double mid = -1;
+        double height = -1;
+        while (s <= e) {
+            mid = s + (e - s) / 2;
+            if (checkHeight(arr, mid, m)) {
+                height = mid;
+                s = mid + 1;
+            }
+            else {
+                e = mid - 1;
+            }
+        }
+        System.out.println(height);
+    }
+
+    private static boolean checkHeight(double[] arr, double mid, double m) {
+        double wood = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= mid) {
+                wood += arr[i] - mid;
+            }
+        }
+        if (wood >= m) return true;
+        return false;
+    }
+}
